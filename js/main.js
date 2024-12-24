@@ -380,24 +380,24 @@
     });
   });
 
-	function getWishes() {
-    fetch('https://docs.google.com/spreadsheets/d/1cZ3A5DhdtYEjWT6t-eMLN8E7FBYSQDVn_JFI3DhR6zk/gviz/tq')
-      .then(s => s.text())
-      .then(t => t.split(/setResponse\(({.*})\);/)[1])
-      .then(x => JSON.parse(x).table.rows)
-      .then(wishArr => {
-        for (var index = 0; index < wishArr.length; index++) {
-          $('.wish-box').prepend(
-            '<div class="wish-box-item"><strong>' +
-              utf8(wishArr[index]['c'][1]['v']) +
-              '</strong><p>' +
-              utf8(wishArr[index]['c'][2]['v']) +
-              '</p></div>'
-          );
-        }
-      });
-	}
-	getWishes();
+	// function getWishes() {
+    // fetch('https://docs.google.com/spreadsheets/d/1cZ3A5DhdtYEjWT6t-eMLN8E7FBYSQDVn_JFI3DhR6zk/gviz/tq')
+    //   .then(s => s.text())
+    //   .then(t => t.split(/setResponse\(({.*})\);/)[1])
+    //   .then(x => JSON.parse(x).table.rows)
+    //   .then(wishArr => {
+    //     for (var index = 0; index < wishArr.length; index++) {
+    //       $('.wish-box').prepend(
+    //         '<div class="wish-box-item"><strong>' +
+    //           utf8(wishArr[index]['c'][1]['v']) +
+    //           '</strong><p>' +
+    //           utf8(wishArr[index]['c'][2]['v']) +
+    //           '</p></div>'
+    //       );
+    //     }
+    //   });
+	// }
+	// getWishes();
 
 	
 	$(function(){
