@@ -352,15 +352,15 @@
       return;
     }
     fetch(
-      'https://docs.google.com/forms/u/0/d/e/1FAIpQLSejUdhk4JsHfuF6AWtk19WEkVsZfKCsvFgOvI2iz7JTLvEFzA/formResponse',
+	  'https://docs.google.com/forms/u/0/d/e/1FAIpQLSeMwIz26GHpHxjnc5SfQs7Nh3i7Q_rtxWtijzlDBDunIuVHDw/formResponse',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: encodeForm({
-          'entry.1023536172': data[0].value,
-          'entry.533895006': utf8(data[1].value),
+          'entry.1596425263': data[0].value,
+          'entry.891643795': utf8(data[1].value),
         }),
         mode: 'no-cors',
       }
@@ -380,24 +380,27 @@
     });
   });
 
-	// function getWishes() {
-    // fetch('https://docs.google.com/spreadsheets/d/1cZ3A5DhdtYEjWT6t-eMLN8E7FBYSQDVn_JFI3DhR6zk/gviz/tq')
-    //   .then(s => s.text())
-    //   .then(t => t.split(/setResponse\(({.*})\);/)[1])
-    //   .then(x => JSON.parse(x).table.rows)
-    //   .then(wishArr => {
-    //     for (var index = 0; index < wishArr.length; index++) {
-    //       $('.wish-box').prepend(
-    //         '<div class="wish-box-item"><strong>' +
-    //           utf8(wishArr[index]['c'][1]['v']) +
-    //           '</strong><p>' +
-    //           utf8(wishArr[index]['c'][2]['v']) +
-    //           '</p></div>'
-    //       );
-    //     }
-    //   });
-	// }
-	// getWishes();
+	function getWishes() {
+    fetch('https://docs.google.com/spreadsheets/d/1_DenetI-GaxVHUUhe0rBEt5yiuJwn7cU-NQyZj1QwwU/gviz/tq', {
+		// method: 'GET',
+		mode: 'no-cors'
+	})
+      .then(s => s.text())
+      .then(t => t.split(/setResponse\(({.*})\);/)[1])
+      .then(x => JSON.parse(x).table.rows)
+      .then(wishArr => {
+        for (var index = 0; index < wishArr.length; index++) {
+          $('.wish-box').prepend(
+            '<div class="wish-box-item"><strong>' +
+              utf8(wishArr[index]['c'][1]['v']) +
+              '</strong><p>' +
+              utf8(wishArr[index]['c'][2]['v']) +
+              '</p></div>'
+          );
+        }
+      });
+	}
+	getWishes();
 
 	
 	$(function(){
